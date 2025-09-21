@@ -58,9 +58,11 @@
 /* Hero Section */
 .hero {
   background: url("img/hero-bg.png") no-repeat center/cover;
-  min-height: 60vh; /* Minimum height */
+  height: 100vh;               /* full viewport height */
+  width: 100%;                 /* full width */
   display: flex;
   align-items: center;
+  justify-content: center;
   color: #343434;
   padding: 40px 20px;
   flex-direction: column;
@@ -108,7 +110,7 @@
 /* Cards Section */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive grid */
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 cards in a row */
   gap: 25px;
   padding: 40px 20px;
   background: #f8f9fa;
@@ -116,7 +118,7 @@
 
 .card {
   position: relative;
-  min-height: 200px; /* minimum height */
+  height: 250px; /* default card height for desktop */
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -126,9 +128,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   text-align: center;
 }
+
 
 .card:hover {
   background-size: 110%;
@@ -166,13 +168,17 @@ footer {
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .hero {
-    padding: 30px 15px;
+    background: url("img/hero-bg-mobile2.png") no-repeat center center;
+    background-size: cover;   /* fills entire viewport */
+    height: 100vh;            /* full viewport height */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;            /* optional padding */
   }
 
   .hero h1 {
@@ -184,10 +190,18 @@ footer {
   }
 
   .cards-container {
-    grid-template-columns: 1fr; /* single column on small screens */
-    padding: 20px 10px;
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background-size: cover !important;
+    background-position: center center !important;
   }
 }
+
 
 @media (max-width: 480px) {
   .hero h1 {
@@ -204,5 +218,6 @@ footer {
 
   .card {
     min-height: auto; /* adjust height automatically */
+   /* height: 20vh; /* taller cards for small mobiles */
   }
 }
