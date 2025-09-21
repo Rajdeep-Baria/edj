@@ -66,13 +66,17 @@
   color: #343434;
   padding: 40px 20px;
   flex-direction: column;
-  text-align: center;
+  text-align: center;          /* default center for mobile fallback */
 }
 
 .hero-content {
-  width: 100%;
+  width: 80%;       /* 100% - 20% margin-left */
+  text-align: left;
+  margin-left: 0;   /* remove extra margin */
+  padding-left: 20px; /* optional spacing from left */
 }
 
+/* Heading and paragraph responsive */
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3rem); /* responsive font size */
   margin-bottom: 15px;
@@ -83,11 +87,12 @@
   margin-bottom: 20px;
 }
 
+/* Hero button */
 .hero-btn {
   display: inline-block;
   padding: 12px 24px;
-  background: white;
-  color: black;
+  background: #a067ae;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
@@ -95,16 +100,18 @@
 }
 
 .hero-btn:hover {
-  background: rgb(32, 124, 205);
+  background: rgb(255, 255, 255);
+  border: #dda2a2 1px 1px;
+  color: #353535;
 }
 
 /* Hero heading colors */
 .class-text {
-  color: #3e9cff;  /* Blue */
+  color: #dda2a2;  /* Blue */
 }
 
 .fort-text {
-  color: #ff4444;  /* Red */
+  color: #353535;  /* Red */
 }
 
 /* Cards Section */
@@ -167,18 +174,43 @@ footer {
 }
 
 /* Responsive Media Queries */
+/* Mobile dropdown background */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: #fff5ec;  /* match your navbar background */
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 15px;
+    color: #3178dc !important; /* your link color */
+    font-weight: bold;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #ffd700 !important;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     background: url("img/hero-bg-mobile2.png") no-repeat center center;
-    background-size: cover;   /* fills entire viewport */
-    height: 100vh;            /* full viewport height */
+    background-size: cover;
+    height: 100vh;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;       /* vertical centering */
+    justify-content: center;   /* horizontal centering */
     flex-direction: column;
     text-align: center;
-    padding: 20px;            /* optional padding */
+    padding: 20px;
+  }
+
+ .hero-content {
+    width: 90%;           /* nearly full width */
+    text-align: center;   /* center text */
+    margin-left: 0;       /* remove desktop margin */
   }
 
   .hero h1 {
@@ -187,6 +219,10 @@ footer {
 
   .hero p {
     font-size: 1rem;
+  }
+
+  .hero-btn {
+    padding: 10px 20px;
   }
 
   .cards-container {
